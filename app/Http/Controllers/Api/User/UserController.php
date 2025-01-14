@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->only(['index', 'destroy']);
+    }
     public function index()
     {
         $users = User::query()
